@@ -1,20 +1,26 @@
-import React, { CSSProperties, FC } from 'react';
-import { HBox, VBox } from './boxes';
+import React, { CSSProperties, ReactNode } from 'react';
+import { observer } from 'mobx-react-lite';
+import { Model } from '@yoskutik/mobx-react-mvvm';
+import { HBox } from './boxes';
 import { LoadingMask } from './LoadingMask';
 import { Button } from './Button';
+import { Tile } from './Tile';
 
-type FormProps = {
+type FormProps<T extends Model> = {
   title?: string;
   isLoading?: boolean;
   style?: CSSProperties;
   cls?: string;
   buttonText?: string;
   onClick?: () => void;
-  disabled?: boolean;
+  model?: T;
+  children?: ReactNode;
 };
 
-export const Form: FC<FormProps> = ({ children, style, cls = '', isLoading, buttonText, onClick, disabled, title }) => (
-  <VBox cls={`form ${cls}`} style={style}>
+export const Form = observer(<T extends Model>({
+  children, style, cls = '', isLoading, buttonText = 'Save', onClick, model, title,
+}: FormProps<T>) => (
+  <Tile cls={`form ${cls}`} style={style}>
     {title && (
       <div className="form__title">
         <h2>{title}</h2>
@@ -23,9 +29,10 @@ export const Form: FC<FormProps> = ({ children, style, cls = '', isLoading, butt
     {children}
     {(buttonText || onClick) && (
       <HBox justify="center">
-        <Button text={buttonText} onClick={onClick} disabled={disabled}/>
+        {/* A button will be active only if passed model have been changed, and it's valid */}
+        <Button text={buttonText} onClick={onClick} disabled={!model.isDirty || !model.isValid}/>
       </HBox>
     )}
     {isLoading && <LoadingMask/>}
-  </VBox>
-);
+  </Tile>
+  ));

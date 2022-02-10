@@ -26,6 +26,10 @@ body {
     justify-content: space-between;
   }
 
+  &.justify-space-around {
+    justify-content: space-around;
+  }
+
   &.justify-center {
     justify-content: center;
   }
@@ -53,9 +57,9 @@ input {
 .button {
   background-color: #1338be;
   border-radius: 4px;
+  padding: 6px 12px;
   cursor: pointer;
   border: none;
-  padding: 6px;
   color: #fff;
 
   &.disabled {
@@ -117,37 +121,66 @@ input {
   }
 }
 
-
-
-.login-page {
+#root {
   background-color: #f0f0f0;
+  overflow: auto;
   height: 100%;
   width: 100%;
-
-  &__form {
-    transform: translate(-50%, -50%);
-    position: fixed;
-    left: 50%;
-    top: 50%;
-  }
 }
 
-.main-page {
-  background-color: #f0f0f0;
-  height: 100%;
-  width: 100%;
+.first-row .form {
+  margin: 30px;
+}
 
-  &__form {
-    margin: 30px;
+.tile {
+  box-shadow: 0 4px 8px rgba(#000, 0.3);
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.tab-panel {
+  .tab {
+    margin-right: 6px;
+    cursor: pointer;
+    padding: 6px;
+
+    &.chosen {
+      border-bottom: 1px solid #1338be;
+      margin-bottom: -1px;
+    }
+  }
+
+  &__header {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  &__right {
+    border-left: 1px solid #e0e0e0;
+    padding: 10px;
+    height: 100%;
+    width: 200px;
+  }
+
+  &__state-block {
+    border: 1px solid #e0e0e0;
+    margin-bottom: 16px;
+    padding: 5px;
+  }
+
+  &__content {
+    margin-top: 16px;
+    height: 100%;
+
+    .text-field {
+      margin-bottom: 10px;
+      width: 45%;
+    }
   }
 }
 
 .form {
-  box-shadow: 0 4px 8px rgba(#000, 0.3);
-  background-color: #fff;
-  border-radius: 12px;
   position: relative;
-  padding: 20px;
   width: 300px;
 
   &__title {

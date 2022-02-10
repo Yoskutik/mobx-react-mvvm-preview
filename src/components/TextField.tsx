@@ -20,18 +20,18 @@ export const TextField = observer(<T extends Model>({
   const id = useRef(generateId()).current;
 
   return (
-        <VBox style={style} onFocus={() => setHasBeenFocused(true)} cls="text-field">
-            {label && (
-                <label htmlFor={id} style={{ marginBottom: 4 }}>
-                    {required && <span style={{ color: 'red' }}>* </span>}
-                    {label}:
-                </label>
-            )}
-            <input value={model[name] as any} onChange={evt => model[name] = evt.target.value as any} type={type}
-                id={id}/>
-            {hasBeenFocused && model.errors[name] && (
-                <span style={{ color: 'red', marginTop: 4 }}>{model.errors[name]}</span>
-            )}
-        </VBox>
+    <VBox style={style} onFocus={() => setHasBeenFocused(true)} cls="text-field">
+      {label && (
+        <label htmlFor={id} style={{ marginBottom: 4 }}>
+          {required && <span style={{ color: 'red' }}>* </span>}
+          {label}:
+        </label>
+      )}
+      <input value={model[name] as any} onChange={evt => model[name] = evt.target.value as any} type={type}
+             id={id}/>
+      {hasBeenFocused && model.errors[name] && (
+        <span style={{ color: 'red', marginTop: 4 }}>{model.errors[name]}</span>
+      )}
+    </VBox>
   );
 });

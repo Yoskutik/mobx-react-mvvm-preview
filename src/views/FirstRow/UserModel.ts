@@ -1,11 +1,11 @@
 import { makeObservable, observable } from 'mobx';
-import { field, Model, validate } from '@yoskutik/mobx-react-mvvm';
-import { email, generateId, maxLength, required } from '@utils';
+import { deepComparator, field, Model, validate } from '@yoskutik/mobx-react-mvvm';
+import { email, maxLength, required } from '@utils';
 
+/**
+ * This is a base model for other models of first section.
+ */
 export class UserModel extends Model {
-  @field({ factory: () => generateId('User'), watch: false })
-  readonly id: string = undefined;
-
   @field({ label: 'Your name' }) @observable name = '';
 
   @validate(required())
@@ -17,10 +17,9 @@ export class UserModel extends Model {
   @validate(required(), email(), maxLength(64))
   @field({ label: 'Your email address' }) @observable email = '';
 
-  @validate(required(), maxLength(255))
-  @field({ label: 'Your address' }) @observable address = '';
-
-  @field({ deepCheck: true, label: 'Your interests' })
+  // This field has comparator: deepComparator because by default values are compared by link.
+  // But with this comparator the Model would compare values by array's content
+  @field({ comparator: deepComparator(), label: 'Your interests' })
   @observable.shallow interests: string[] = [];
 
   constructor() {
