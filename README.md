@@ -1,8 +1,10 @@
-## Todo List
+# Mobx MVVM Preview
 
-This sandbox was made to demonstrate the capabilities of the MobX + DI +
-MVVM architecture. Here you can find an examples of using View, ChildView
-and ViewModel entities.
+## DI
 
-In this sandbox you can add new Todo's, filter them, chose one of them and
-delete or make as done the chosen one.
+This branch is created to demonstrate the possibilities of the DI pattern in
+ViewModel's.
+
+In this sandbox there are some articles. You can mark some articles read, and
+the system must notify you about it. Also, it should notify about some other
+events like achieving 10 reads, and collect statistics. 

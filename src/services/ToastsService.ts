@@ -6,6 +6,9 @@ export type TToast = {
   text: string;
 };
 
+/**
+ * Every ViewModel is supposed to be a transient class.
+ */
 @singleton()
 export class ToastsService {
   @observable.shallow data: TToast[] = [];

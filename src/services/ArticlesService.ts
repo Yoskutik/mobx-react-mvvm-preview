@@ -7,13 +7,16 @@ export type TArticle = {
   title: string;
 };
 
+/**
+ * Every ViewModel is supposed to be a transient class.
+ */
 @singleton()
 export class ArticlesService {
-  @observable.shallow readIds = new Set<string>();
-
   @observable readCount = 0;
 
   @observable collectStatistics = true;
+
+  @observable.shallow readIds = new Set<string>();
 
   constructor(private toastsService: ToastsService) {
     makeObservable(this);

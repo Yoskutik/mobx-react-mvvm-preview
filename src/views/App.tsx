@@ -8,12 +8,17 @@ import { Articles } from './Articles';
 import { Statistics } from './Statistics';
 import '../Style.scss';
 
+/**
+ * Every ViewModel is supposed to be a transient class.
+ */
 @injectable()
 export class AppViewModel extends ViewModel {
   @observable.shallow readonly data: TArticle[] = Array(20).fill(null).map(() => (
     { id: Math.random().toString(), title: this.textGenerator.make() }
   ));
 
+  // This class is injected automatically by container.resolved, that is called in the view function
+  // It is injected by class
   constructor(private textGenerator: TextGenerator) {
     super();
     makeObservable(this);

@@ -1,5 +1,8 @@
 import { singleton } from 'tsyringe';
 
+/**
+ * Every ViewModel is supposed to be a transient class.
+ */
 @singleton()
 export class TextGenerator {
   private readonly beforeTitles = [
