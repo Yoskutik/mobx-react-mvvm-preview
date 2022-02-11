@@ -8,12 +8,15 @@ import { email, maxLength, required } from '@utils';
 export class UserModel extends Model {
   @field({ label: 'Your name' }) @observable name = '';
 
-  @validate(required())
+  // This field is have to be required and a string of spaces is not a valid string, so it must be trimmed
+  // before the validation.
+  @validate({ preprocess: value => value?.trim(), validators: [required()] })
   @field({ label: 'Your surname' }) @observable surname = '';
 
-  @validate(required())
+  @validate({ preprocess: value => value?.trim(), validators: [required()] })
   @field({ label: 'Your username' }) @observable username = '';
 
+  // We don't need to trim this value because ' ' is not a valid email
   @validate(required(), email(), maxLength(64))
   @field({ label: 'Your email address' }) @observable email = '';
 
