@@ -15,7 +15,7 @@ export class MetaArrayModel extends Model {
 
   @field()
   @computed get isAnyUserDirty() {
-    return this.users.some(it => it.isDirty);
+    return this.users.some(it => it.isChanged);
   }
 
   constructor() {

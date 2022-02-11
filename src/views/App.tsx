@@ -28,7 +28,7 @@ export class AppViewModel extends ViewModel {
   }
 
   onUserSaveClick = () => {
-    // Model resets after a commit. isDirty becomes false
+    // Model resets after a commit. isChanged becomes false
     this.user.commit();
     // state will return an object without Model's service fields and getters
     // It can be using in API requests

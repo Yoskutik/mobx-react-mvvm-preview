@@ -30,7 +30,7 @@ export const Form = observer(<T extends Model>({
     {(buttonText || onClick) && (
       <HBox justify="center">
         {/* A button will be active only if passed model have been changed, and it's valid */}
-        <Button text={buttonText} onClick={onClick} disabled={!model.isDirty || !model.isValid}/>
+        <Button text={buttonText} onClick={onClick} disabled={!model.isChanged || !model.isValid}/>
       </HBox>
     )}
     {isLoading && <LoadingMask/>}

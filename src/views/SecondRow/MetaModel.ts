@@ -21,7 +21,7 @@ export class MetaModel extends Model {
 
   @field()
   @computed private get isNestedChanged() {
-    return this.general.isDirty || this.location.isDirty;
+    return this.general.isChanged || this.location.isChanged;
   }
 
   constructor() {

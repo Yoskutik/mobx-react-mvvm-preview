@@ -14,7 +14,7 @@ const StateBlock = observer(<T extends Model>({ model, name }: { model: T, name:
   <VBox cls="tab-panel__state-block">
     <b style={{ marginBottom: 5 }}>{name}</b>
     <div>Is valid: {model.isValid.toString()}</div>
-    <div>Is dirty: {model.isDirty.toString()}</div>
+    <div>Is changed: {model.isChanged.toString()}</div>
   </VBox>
 ));
 
@@ -56,7 +56,7 @@ export const SecondRow = childView<AppViewModel>(({ viewModel }) => {
                 </>}
               </HBox>
               <Button text="Save" onClick={onSave}
-                      disabled={!viewModel.meta[chosenTab === 'User' ? 'general' : 'location'].isDirty}/>
+                      disabled={!viewModel.meta[chosenTab === 'User' ? 'general' : 'location'].isChanged}/>
             </VBox>
           </VBox>
           <VBox cls="tab-panel__right">

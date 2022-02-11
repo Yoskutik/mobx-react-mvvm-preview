@@ -15,7 +15,7 @@ const StateBlock = observer(<T extends Model>({ model, name }: { model: T, name:
   <VBox cls="tab-panel__state-block">
     <b style={{ marginBottom: 5 }}>{name}</b>
     <div>Is valid: {model.isValid.toString()}</div>
-    <div>Is dirty: {model.isDirty.toString()}</div>
+    <div>Is changed: {model.isChanged.toString()}</div>
   </VBox>
 ));
 
@@ -56,7 +56,7 @@ export const ThirdRow = childView<AppViewModel>(({ viewModel }) => {
                 <TextField model={chosenModel} name="email" />
               </HBox>
               <HBox>
-                <Button text="Save" onClick={() => chosenModel.commit()} disabled={!chosenModel.isDirty}
+                <Button text="Save" onClick={() => chosenModel.commit()} disabled={!chosenModel.isChanged}
                         style={{ marginRight: 10 }}/>
                 <Button text="Delete" onClick={onDeleteClick}/>
               </HBox>
