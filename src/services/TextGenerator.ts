@@ -1,7 +1,7 @@
 import { singleton } from 'tsyringe';
 
 /**
- * Every ViewModel is supposed to be a transient class.
+ * Every Service is supposed to be a singleton class.
  */
 @singleton()
 export class TextGenerator {
