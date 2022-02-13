@@ -13,7 +13,7 @@ type ArticleProps = {
 @injectable()
 class ArticlesViewModel extends ViewModel<AppViewModel, ArticleProps> {
   @computed get read(): boolean {
-    return this.articlesService.readIds.has(this.viewProps.data.id);
+    return this.isActive && this.articlesService.readIds.has(this.viewProps.data.id);
   }
 
   constructor(public articlesService: ArticlesService) {
